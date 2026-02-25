@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Beca ❤️</title>
+
+  <!-- (Opcional) favicon -->
+  <!-- <link rel="icon" type="image/png" href="assets/favicon.png"> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="heart.css" />
+</head>
+
+<body>
+  <!-- Playlist -->
+  <audio id="player" preload="metadata"></audio>
+
+  <!-- Botão música -->
+  <button id="heartBtn" class="heart-music" type="button" aria-label="Tocar ou pausar música" title="Tocar / Pausar">
+    ❤️
+  </button>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="panel reveal">
+        <h1>Feliz aniversário, Beca ❤️</h1>
+        <p class="sub">Eu fiz isso aqui só pra você.</p>
+
+        <div class="actions">
+          <button id="openMsgBtn" class="btn" type="button">Abrir mensagem</button>
+          <button id="openGameBtn" class="btn ghost" type="button">Jogar memória</button>
+        </div>
+
+        <p class="tip">Dica: aperta no ❤️ pra tocar a música</p>
+      </div>
+    </section>
+
+    <!-- MENSAGEM -->
+    <section id="mensagem" class="section hidden">
+      <div class="panel reveal">
+        <p class="text">
+          Eu nunca imaginei entrar em um relacionamento tão cedo novamente.
+          Passei por muitos problemas, e a Shira me ajudou muito.
+          Mas, quando te conheci, foi uma das melhores coisas que aconteceram.
+          Fomos conversando aos poucos e ficamos próximos, ao ponto de realmente te amar.
+          Você é alguém incrível, engraçada e de ótimo coração — uma rosa que merece ser cuidada.
+          <br><br>
+          Agora chegou um dia especial para você: seu aniversário,
+          o dia em que a melhor pessoa deste mundo nasceu.
+          <br><br>
+          <strong>Feliz aniversário, xuxu! ❤️</strong>
+        </p>
+
+        <img
+          src="assets/slugcat-heart.gif"
+          alt="Slugcat segurando um coração"
+          class="slugcat reveal"
+          loading="lazy"
+        />
+
+        <div class="actions" style="margin-top:16px;">
+          <button id="goGameFromMsgBtn" class="btn" type="button">Ir pro jogo da memória</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOGO -->
+    <section id="game" class="section hidden">
+      <div class="panel reveal">
+        <div class="game-header">
+          <h2 class="title">Jogo da Memória</h2>
+          <div class="stats">
+            <span><strong>Pares:</strong> <span id="pairs">0</span>/<span id="pairsTotal">10</span></span>
+            <span><strong>Tentativas:</strong> <span id="moves">0</span></span>
+            <span><strong>Tempo:</strong> <span id="time">00:00</span></span>
+          </div>
+        </div>
+
+        <div id="board" class="board" aria-label="Tabuleiro do jogo da memória"></div>
+
+        <div class="actions" style="margin-top:16px;">
+          <button id="restartBtn" class="btn ghost" type="button">Reiniciar</button>
+          <button id="backTopBtn" class="btn ghost" type="button">Voltar ao topo</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VITÓRIA -->
+  <div id="winOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Vitória">
+    <div class="overlay-card">
+      <h3>Você ganhou!!! 🎉</h3>
+      <p>Você é incrível, Beca 💛</p>
+      <img src="assets/slugcat-confetti.gif" alt="Slugcat soltando confetes" class="win-gif" loading="lazy" />
+
+      <div class="actions" style="margin-top:14px;">
+        <button id="continueBtn" class="btn" type="button">Continuação</button>
+        <button id="playAgainBtn" class="btn ghost" type="button">Jogar de novo</button>
+        <button id="closeWinBtn" class="btn ghost" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEART MODAL (pedido) -->
+  <div id="heartOverlay" class="heart-overlay hidden" role="dialog" aria-modal="true" aria-label="Pedido">
+    <div class="heart-card">
+      <div class="heart-top">
+        <h3 class="heart-title">Uma coisinha…</h3>
+        <button id="heartCloseBtn" class="heart-close" type="button" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="heart-body">
+        <div class="heart-sticker">
+          <img src="assets/rain-world-sticker-question.gif" alt="Sticker interrogação" />
+        </div>
+
+        <div class="heart-text">
+          <p id="proposalText">
+            Beca, gosto muito de você e com as conversas que temos…
+            desculpa por eu não estar sendo tão presente ultimamente, mas tudo tinha um motivo: esse site.
+            Eu queria te pedir uma coisa importante… tornar isso oficial, sabe?
+            <br><br>
+            Lakinha… você quer namorar comigo e deixar isso oficial de verdade?
+            Mesmo com a distância e eu não sendo perfeito… eu quero tentar, porque eu sinto que você é a pessoa certa.
+          </p>
+        </div>
+      </div>
+
+      <div class="heart-actions">
+        <button id="yesBtn" class="btn" type="button">Sim 💛</button>
+        <button id="noBtn" class="btn ghost" type="button">Não 😳</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="resultOverlay" class="result-overlay hidden" role="dialog" aria-modal="true" aria-label="Resultado">
+    <div class="result-card">
+      <h3 id="resultTitle">...</h3>
+      <p id="resultDesc" class="muted">...</p>
+      <img id="resultGif" class="result-gif" src="" alt="Resultado" />
+      <div id="particles" class="particles" aria-hidden="true"></div>
+
+      <div class="actions" style="margin-top:14px;">
+        <button id="resultCloseBtn" class="btn ghost" type="button">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script src="memory.js" defer></script>
+  <script src="heart.js" defer></script>
+</body>
+</html>
