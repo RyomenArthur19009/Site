@@ -91,3 +91,20 @@
   // Fechar vitória (o jogo abre)
   $("closeWinBtn")?.addEventListener("click", () => $("winOverlay")?.classList.add("hidden"));
 })();
+
+const player = document.getElementById('player');
+const heartBtn = document.getElementById('heartBtn');
+
+// Defina o caminho da música aqui
+const musicaCaminho = 'music/sua-musica-aqui.mp3'; 
+player.src = musicaCaminho;
+
+heartBtn.addEventListener('click', () => {
+  if (player.paused) {
+    player.play();
+    heartBtn.classList.add('playing'); // se tiver animação no CSS
+  } else {
+    player.pause();
+    heartBtn.classList.remove('playing');
+  }
+});
